@@ -88,28 +88,28 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           title: "Fractional shares",
           body:
-          "Instead of having to buy an entire share, invest any amount you want.",
+              "Instead of having to buy an entire share, invest any amount you want.",
           image: _buildImage('img1.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Learn as you go",
           body:
-          "Download the Stockpile app and master the market with our mini-lesson.",
+              "Download the Stockpile app and master the market with our mini-lesson.",
           image: _buildImage('img2.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Kids and teens",
           body:
-          "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
           image: _buildImage('img3.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Full Screen Page",
           body:
-          "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
           image: _buildFullscreenImage(),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
@@ -165,11 +165,51 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       skipOrBackFlex: 0,
       nextFlex: 0,
       showBackButton: true,
-      //rtl: true, // Display as right-to-left
+      rtl: true, // Display as right-to-left
       back: const Icon(Icons.arrow_back),
       skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
-      next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      next: Container(
+        height: 62,
+        width: 164,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Color(0xFFA822E7),
+            style: BorderStyle.solid,
+            width: 2.0,
+          ),
+          color: const Color(0xFFA822E7),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 20,
+              ),
+              Text(
+                'بعدی',
+              ),
+            ],
+          ),
+        ),
+      ),
+      done: Container(
+        height: 62,
+        width: 164,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: const Center(
+          child: Text(
+            'بستن راهنما',
+            style: TextStyle(
+                fontFamily: 'Yekanbakh', fontSize: 18, color: Colors.black),
+          ),
+        ),
+      ),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb

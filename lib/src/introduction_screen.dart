@@ -11,6 +11,8 @@ import 'package:introduction_screen/src/model/position.dart';
 import 'package:introduction_screen/src/ui/intro_button.dart';
 import 'package:introduction_screen/src/ui/intro_page.dart';
 
+import 'ui/purple_button.dart';
+
 class IntroductionScreen extends StatefulWidget {
   /// All pages of the onboarding
   final List<PageViewModel>? pages;
@@ -461,10 +463,10 @@ class IntroductionScreenState extends State<IntroductionScreen> {
                   decoration: widget.dotsContainerDecorator,
                   child: Row(
                     children: [
-                      Expanded(
-                        flex: widget.skipOrBackFlex,
-                        child: leftBtn ?? const SizedBox(),
-                      ),
+                      // Expanded(
+                      //   flex: widget.skipOrBackFlex,
+                      //   child: leftBtn ?? const SizedBox(),
+                      // ),
                       Expanded(
                         flex: widget.dotsFlex,
                         child: Center(
@@ -487,14 +489,48 @@ class IntroductionScreenState extends State<IntroductionScreen> {
                               : const SizedBox(),
                         ),
                       ),
-                      Expanded(
-                        flex: widget.nextFlex,
-                        child: rightBtn ?? const SizedBox(),
-                      ),
+                      // Expanded(
+                      //   flex: widget.nextFlex,
+                      //   child: rightBtn ?? const SizedBox(),
+                      // ),
                     ].asReversed(widget.rtl),
                   ),
                 ),
-                if (widget.globalFooter != null) widget.globalFooter!
+                SizedBox(
+                  width: double.infinity,
+                  height: 80,
+                  child: Container(
+                    decoration: const BoxDecoration(color: Color(0xFFEFF4FF)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            flex: widget.nextFlex,
+                            child: rightBtn ?? const SizedBox(),
+                          ),
+                          Expanded(
+                            flex: widget.skipOrBackFlex,
+                            child: IntroButton(
+                              child: widget.done!,
+                              style: widget.baseBtnStyle
+                                      ?.merge(widget.doneStyle) ??
+                                  widget.doneStyle,
+                              semanticLabel: widget.doneSemantic,
+                              onPressed: !_isScrolling ? widget.onDone : null,
+                            ),
+                          ),
+                        ].asReversed(widget.rtl),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // if (widget.globalFooter != null) widget.globalFooter!
               ],
             ),
           ),
